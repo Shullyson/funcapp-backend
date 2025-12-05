@@ -1,0 +1,7 @@
+azure-functions
+azure-identity
+azure-storage-blob
+requests
+azure-search-documents
+azure-core
+psutil
