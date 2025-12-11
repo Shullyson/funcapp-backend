@@ -1,12 +1,12 @@
-# Finance IT - Azure Functions App
+# SharePoint Document AI Assistant - Azure Functions App
 
-A serverless Azure Functions application that synchronizes SharePoint documents to Azure Blob Storage and provides AI-powered document querying capabilities for RTL Group Finance IT operations.
+A serverless Azure Functions application that synchronizes SharePoint documents to Azure Blob Storage and provides AI-powered document querying capabilities.
 
 ## 🚀 Features
 
 ### 📅 Automated Document Synchronization (Timer Trigger)
 - **Schedule**: Runs every an hour (`0 *** * * * *`)
-- **Source**: SharePoint drives from RTL Group Finance IT site
+- **Source**: SharePoint drives from your organization
 - **Destination**: Azure Blob Storage with organized folder structure
 - **Smart Sync**: Only updates files that have been modified since last sync
 - **Progress Tracking**: Maintains sync state to avoid unnecessary re-processing
@@ -37,7 +37,7 @@ A serverless Azure Functions application that synchronizes SharePoint documents 
   - Azure Blob Storage
   - Azure Cognitive Search
   - Azure OpenAI
-- SharePoint Online access to RTL Group tenant
+- SharePoint Online access
 - Python 3.10 or later
 - Azure Functions Core Tools
 
@@ -71,7 +71,7 @@ SEARCH_KEY=<Azure Cognitive Search API key>
 ## 🏗️ Project Structure
 
 ```
-FinIT-Agent-Backend/
+funcapp-backend/
 ├── function_app.py          # Main application with both functions
 ├── requirements.txt         # Python dependencies
 ├── host.json               # Functions host configuration
@@ -83,8 +83,8 @@ FinIT-Agent-Backend/
 
 1. **Clone the repository**
    ```bash
-   git clone https://RTLGroup-SharePoint@dev.azure.com/rtlgroup-sharepoint/DWS%20-%20Finance%20IT%20Agent/_git/FinIT-Agent-Backend
-   cd FinIT-Agent-Backend
+   git clone <your-repository-url>
+   cd funcapp-backend
    ```
 
 2. **Install Python dependencies**
