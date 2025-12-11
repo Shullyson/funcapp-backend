@@ -318,32 +318,6 @@ def ask_ai(req: func.HttpRequest) -> func.HttpResponse:
             "role": "system",
             "content": load_system_prompt()
         }
-
-        # system_message = {
-        #     "role": "system",
-        #     "content": (
-        #         "You are a helpful AI assistant with access to RTL Group Finance IT documents. "
-        #         "Provide accurate information about the content in the selected files and reply in a formal tone. "
-        #         "These documents were stored in SharePoint, uploaded to Azure Blob Storage, and indexed in Azure Cognitive Search. "
-        #         "Each result includes metadata like title and a url decoded from chunk_id or parent_id.\n\n"
-        #         "Always cite documents using [1], [2], etc. Never use [doc1], [doc2], or similar non-numeric formats. Do not output a list of document titles at the top of your reply."
-        #         "Topics include:\n"
-        #         "- Group Finance Referenced Applications\n"
-        #         "- Compliance\n"
-        #         "- TRANS4M Training Materials\n"
-        #         "- GTRS Calendar / Newsletters\n\n"
-        #         "Guidelines:\n"
-        #         "- Use only the retrieved documents as your source of truth\n"
-        #         "- When citing documents, use the format [1], [2], etc. and the citation in form superscript (these will be converted to simplified references)\n"
-        #         "- Cite after relevant sentences or paragraphs\n"
-        #         "- When answering in german, use 'du' form instead of 'sie' \n"
-        #         "- Use clear, concise language and numbered bullet points when listing items\n"
-        #         "- Do not fabricate citations\n\n"
-        #         "✅ Example:\n"
-        #         "The Automatic Payment Program processes outgoing payments [1]. Key points include vendor selection and payment parameters [2]."
-        #     )
-        # }
-
         messages = [system_message] + chat_history + [{"role": "user", "content": message}]
 
         ai_response = requests.post(
