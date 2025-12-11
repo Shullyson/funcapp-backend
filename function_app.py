@@ -40,7 +40,7 @@ def main(mytimer: func.TimerRequest) -> None:
         PROGRESS_FILE = f"{BLOB_PREFIX}/.progress.json"
 
         blob_conn = os.environ["BLOB_CONNECTION_STRING"]
-        container = os.environ.get("SHAREPOINT_CONTAINER", "rtlgssfinitcontainer2")
+        container = os.environ.get("SHAREPOINT_CONTAINER", "your-container-name")
         hostname = os.environ["TENANT_NAME"]
 
         drive_targets = json.loads(json.loads(os.environ["SHAREPOINT_DRIVES"]))
@@ -265,11 +265,8 @@ def _generate_sharepoint_url(doc: dict) -> str:
         title = doc.get("title", "")
         title_lower = title.lower()
         directory_map = {
-            "compliance": "Compliance",
-            "trans4m": "TRANS4M Training Materials",
-            "gtrs": "GTRS Calendar Monthly Newsletters",
-            "group finance": "Group Finance Referenced Applications",
-            "referenced applications": "Group Finance Referenced Applications"
+            # Add your custom directory mappings here
+            # Example: "keyword": "Folder Name"
         }
 
         for keyword, folder in directory_map.items():
@@ -281,8 +278,8 @@ def _generate_sharepoint_url(doc: dict) -> str:
                     constructed_url += "?web=1"
                 return constructed_url
 
-        # 4. Final fallback: Group Finance Referenced Applications
-        full_path = f"Group Finance Referenced Applications/{title}"
+        # 4. Final fallback: Default directory
+        full_path = f"Documents/{title}"
         encoded_path = quote(full_path, safe="/")
         
         default_url = urljoin(base_url + "/", encoded_path)
@@ -365,7 +362,7 @@ def ask_ai(req: func.HttpRequest) -> func.HttpResponse:
                         "parameters": {
                             "endpoint": os.environ["SEARCH_ENDPOINT"],
                             "index_name": os.environ["SEARCH_INDEX_NAME"],
-                            "semantic_configuration": "rag-rtlgss-finit-prod-semantic-configuration",
+                            "semantic_configuration": "your-semantic-configuration",
                             "query_type": "semantic",
                             "fields_mapping": {},
                             "in_scope": True,
